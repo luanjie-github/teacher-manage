@@ -1,0 +1,26 @@
+.zlmb-table{
+	border-collapse:collapse;
+	border:1px solid #a0c6e5;
+}
+.zlmb-table td{
+	border: solid 1px #a0c6e5;
+	height: 26px;
+	line-height: 26px;
+	width: 150px;
+	font-weight: bold;
+	font-size: 13px;
+	color: #5e7595;
+}
+.zlmb-tr{
+}
+.zlmb-label-td{
+	width: 100px;
+}
+.zlmb-field-td{
+	width: 200px;
+}
+.zlmb-field{
+	width: 190px;
+	height: 20px;
+	line-height: 20px;
+}

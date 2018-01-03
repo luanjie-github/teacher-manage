@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etm.dao.SystemDao">
+	<select id="find" 
+	resultType="com.etm.entity.YXEntity">
+		select * from etm_yx
+	</select>
+	<select id="findkc" resultType="com.etm.entity.KCEntity">
+		select * from etm_kc a left join etm_yx b on a.yx_id=b.yx_id
+	</select>
+	<select id="selectkcbyid" parameterType="string"
+		resultType="com.etm.entity.KCEntity">
+		select * from etm_kc a left join etm_yx b on a.yx_id=b.yx_id where a.kc_id=#{kc_id}
+	</select>
+	<select id="findsalary" resultType="com.etm.entity.GZEntity">
+		select a.*,b.xm from etm_gz a left join etm_ls b on a.ls_id=b.ls_id
+	</select>
+	<select id="findsalarybyid" resultType="com.etm.entity.GZEntity">
+		select a.*,b.xm from etm_gz a left join etm_ls b on a.ls_id=b.ls_id where a.ls_id=#{ls_id}
+	</select>
+	<delete id="delete" parameterType="string">
+		delete from etm_yx where yx_id=#{yx_id}
+	</delete>
+	<delete id="deletesalary" parameterType="string">
+		delete from etm_gz where ls_id=#{ls_id}
+	</delete>
+	<delete id="deletekc" parameterType="string">
+		delete from etm_kc where kc_id=#{kc_id}
+	</delete>
+	<insert id="addyx" parameterType="string">
+		insert into etm_yx(yx_id,yxmc)values((select * from (select max(yx_id)+1 from etm_yx)t),#{yxmc})
+	</insert>
+	<insert id="addkc">
+		insert into etm_kc(kc_id,kcmc,dkls,yx_id)values(
+		(select * from (select max(kc_id)+1 from etm_kc ) a),#{kcmc},#{dkls},
+		(select * from (select yx_id from etm_yx where yxmc=#{yx})a)
+		)
+	</insert>
+	<insert id="addsalary">
+		insert into etm_gz (zgz,dkjjb,jbgz,ls_id,gz_id,dksj)values(
+		#{zgz},#{dkjjb},#{jbgz},(select * from (select ls_id from etm_ls where xm=#{xm})a),
+		(select * from (select max(gz_id)+1 from etm_gz)b),#{dksj}
+		)
+	</insert>
+	<update id="editkc">
+		update etm_kc set kcmc=#{kcmc},dkls=#{dkls},yx_id=(select * from (select yx_id from etm_yx where yxmc=#{yx})a)
+		where kc_id=#{kc_id}
+	</update>
+	<update id="editsalary" >
+		update etm_gz set dkjjb=#{dkjjb},jbgz=#{jbgz},dksj=#{dksj},
+		zgz=#{zgz},ls_id=(select * from ( select ls_id from etm_ls where xm=#{xm})a) 
+		where ls_id=#{ls_id}
+	</update>
+</mapper>

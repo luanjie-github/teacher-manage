@@ -1,0 +1,60 @@
+
+BODY
+{
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#D8EEF5,endColorStr=#ffffff);
+}
+
+.ajzltd{
+color:#474747;padding:0;margin:0;
+border: solid 1px #a0c6e5; height: 26px;line-height:26px;width:150px;font-weight:bold;font-size:13px;color:#5e7595;
+}
+.lendtd{
+text-align: center; color: #000000; font-family: 宋体; font-size: 12px; border-top-color: #50a7f6; border-right-color: #50a7f6; border-bottom-color: #50a7f6; border-left-color: #50a7f6; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; background-color: rgb(255, 255, 255);
+}
+.lendinput{
+width: 100%; height: 23px; text-align: left; line-height: 20px; overflow: hidden; font-family: 宋体; font-size: 12px; border-top-width: medium; border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; background-color: rgb(255, 254, 255);
+}
+.btn_bg { 
+	height:63px; 
+	background-image:url(image/indextoplogo.jpg); 
+	-moz-background-size: 100% 100%; 
+	-o-background-size: 100% 100%; 
+	-webkit-background-size: 100% 100%; 
+	background-size: 100% 100%; 
+	-moz-border-image: url(image/indextoplogo.jpg) 0; 
+	background-repeat:no-repeat\9; 
+	background-image:none\9; 
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/indextoplogo.jpg', sizingMethod='scale')\9; 
+}
+.ico{ float:right; margin-top:3px; height:60px; width:60%;overflow:hidden;}
+.login{ width:240px; margin-left:100px; margin-top:0px; height:45px; padding-top:15px; text-align:center; float:left; overflow:hidden;}
+.loginspan{ padding-left:5px; line-height:24px!important; line-height:10px; padding-top:0px!important;padding-top:4px; color:#FFF;}
+.loginspan span{color:#FF0; font-weight:bold; padding:0 3px;}
+ul.shortcut-buttons-set li{
+                float: left;
+                margin: 0 5px 0 0;
+				padding: 0 !important;
+				background: 0; list-style-type: none;display:inline-block;  cursor:pointer}
+a.shortcut-button:link,a.shortcut-button:visited{        
+                display:inline-block;
+                width: 69px;  height:57px;
+                margin: 0;}
+a.shortcut-button span {       
+                display:inline-block;
+				margin-top:5px;
+                text-align: center;
+                width:100%; height:55px;
+                color: #fff;
+                font-size: 12px; cursor:pointer;}
+.shortcut-buttons-set  a{text-decoration:none;}
+.shortcut-button span img {margin-bottom: 0px; border:0px; cursor:pointer;}
+a.shortcut-button:hover { display:inline-block; width:69px; height:57px; /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="images/icobg.png"); */background:url(../image/icobg.png) top left no-repeat;text-decoration:none;}			
+.shortcut-button span:hover {color: #fff; text-decoration:none;}
+.left{ float:left;}
+.right{ float:right;}
+ul,li{
+	padding:0;
+	margin:0;
+	list-style-type: none;
+}
+ 

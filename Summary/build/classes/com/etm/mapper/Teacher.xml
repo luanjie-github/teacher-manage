@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etm.dao.TeacherDao">
+	<select id="selectkc" 
+	resultType="com.etm.entity.ComboboxEntity" parameterType="string">
+		select kc_id id ,kcmc text from etm_kc where 1=1
+		<if test="id !=null and id !=''">
+			and	yx_id=#{id}
+		</if>
+		group by kc_id,kcmc
+	</select>
+	<select id="selectyx" 
+	resultType="com.etm.entity.ComboboxEntity" >
+		select yx_id id,yxmc text from etm_yx group by yx_id,yxmc
+	</select>
+	<select id="selectdkls" resultType="com.etm.entity.ComboboxEntity">
+		select a.ls_id id ,a.xm text from etm_ls a group by a.ls_id ,a.xm
+	</select>
+	<select id="selectdkjjb" resultType="com.etm.entity.ComboboxEntity">
+		select distinct a.dkjjb text from etm_gz a
+	</select>
+	<select id="find" resultType="com.etm.entity.LSEntity" parameterType="string">
+		select a.ls_id,a.skdd,a.sksj,a.xl,a.xm,a.zc,b.yxmc yx,c.kcmc kc,a.kch from etm_ls a left join etm_yx b on a.yx_id=b.yx_id left join 
+		etm_kc c on a.kch=c.kc_id where 1=1 
+		<if test="kcid != null and kcid !=''">
+			and a.kch=#{kcid}
+		</if>
+		<if test="xm !=null and xm !=''">
+			and a.xm=#{xm}
+		</if>
+		<if test="yxid !=null and yxid !=''">
+			and a.yx_id=#{yxid}
+		</if>
+	</select>
+	<select id="findbyid" resultType="com.etm.entity.LSEntity" parameterType="string">
+		select a.skdd,a.sksj,a.xl,a.xm,a.zc,b.yxmc yx,c.kcmc kc,a.kch from etm_ls a left join etm_yx b on a.yx_id=b.yx_id left join 
+		etm_kc c on a.kch=c.kc_id where ls_id=#{ls_id}
+	</select>
+	<update id="editteacher" parameterType="string">
+		update etm_ls set xm=#{xm},skdd=#{skdd},kch=(select kc_id from etm_kc where kcmc=#{kc}),
+		sksj=#{sksj},yx_id=(select yx_id from etm_yx where yxmc=#{yx}),xl=#{xl},zc=#{zc} where ls_id=#{id}
+	</update>
+	<insert id="addteacher" parameterType="string">
+		insert into etm_ls(ls_id,xm,skdd,kch,sksj,yx_id,xl,zc)values
+		((select * from (select max(ls_id)+1 from etm_ls)a),#{xm},
+		#{skdd},(select * from (select kc_id from etm_kc where kcmc=#{kc})b),#{sksj},
+		(select * from (select yx_id from etm_yx where yxmc=#{yx})c),
+		#{xl},#{zc})
+	</insert>
+	<delete id="deleteteacher" parameterType="string">
+		delete from etm_ls where ls_id=#{ls_id}
+	</delete>
+</mapper>
